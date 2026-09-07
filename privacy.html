@@ -1,67 +1,122 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy - JACK Music Publisher</title>
 </head>
 <body>
-  <main>
-    <h1>Privacy Policy</h1>
+  <h1>Privacy Policy</h1>
 
-    <p>Last updated: August 31, 2026</p>
+  <p>
+    Effective date:
+    <strong>2026-09-07</strong>.
+    Governing jurisdiction:
+    <strong>Lebanon</strong>.
+    Controller/operator:
+    <strong>Jack Daher</strong>.
+  </p>
 
-    <p>
-      JACK Music Publisher is a desktop application currently in private
-      development and testing. It helps authorized users prepare and publish
-      creator-owned media to supported social media platforms.
-    </p>
+  <p>
+    JACK Music Publisher ("JACK") is a private, internal tool. It is
+    not offered to the public and does not collect personal
+    information from members of the public. This policy describes how
+    JACK handles data belonging to its own operator(s) and to the
+    third-party platform accounts (YouTube, Meta, TikTok) it is
+    authorized to publish to on their behalf.
+  </p>
 
-    <h2>Information used</h2>
+  <h2>YouTube API Services</h2>
+  <p>
+    JACK uses the YouTube API Services. By authorizing JACK against a
+    Google account, the operator agrees to be bound by the
+    <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>.
+    Google's own handling of data is described in the
+    <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.
+  </p>
+  <p>
+    JACK requests only the <code>youtube.upload</code> OAuth scope. It
+    stores the resulting OAuth credential locally, on the operator's
+    own machine, in an OS-appropriate per-user application-data
+    location -- never inside this project's own source repository or
+    the release-media workspace it publishes from.
+  </p>
+  <p>
+    When the operator approves a YouTube upload, JACK sends the selected
+    local video file, thumbnail image, and the release's operator-provided
+    YouTube upload metadata to YouTube for the operator-configured target
+    channel solely to perform that requested upload. The upload metadata
+    consists of the title, description, tags, category id, privacy status,
+    made-for-kids setting, and synthetic-media disclosure selected for
+    that release.
+  </p>
+  <p>
+    JACK does not durably retain the YouTube API-returned identifier for
+    an uploaded video. That identifier exists only within the narrow
+    upload operation that receives it: it is never returned from that
+    operation, never logged, and never written to JACK's local
+    publication-state record. JACK's durable local duplicate-upload-
+    protection record instead tracks only an identifier-free status
+    (pending, requires manual verification, or complete) for each
+    release. That identifier-free status is JACK's own local operational
+    state, not a retained YouTube API response identifier.
+  </p>
+  <p>
+    An operator may revoke JACK's Google authorization at any time by
+    running JACK's own <code>youtube disconnect</code> command (which
+    calls Google's documented token-revocation endpoint), or directly
+    at
+    <a href="https://security.google.com/settings/security/permissions">Google Account
+    permissions</a>. Revoking or deleting local data through JACK does
+    <strong>not</strong> delete any video or content already hosted on
+    YouTube -- that must be done directly in YouTube Studio.
+  </p>
 
-    <p>
-      The application may access basic account information and authorization
-      data provided by connected platforms when necessary to authenticate the
-      user and perform user-requested publishing actions.
-    </p>
+  <h2>Meta (Facebook/Instagram) Platform data</h2>
+  <p>
+    JACK similarly uses the Meta Graph API to publish to an operator's
+    own Facebook Page and linked Instagram Professional account. Data
+    obtained through Meta's Platform is used solely to perform the
+    publishing actions the operator explicitly requests, and is not sold
+    or shared with third parties. JACK does not currently provide its
+    own local Meta credential-revocation or data-deletion command; an
+    operator can revoke JACK's Meta access directly from their Facebook
+    account's
+    <a href="https://www.facebook.com/settings?tab=business_tools">Business
+    Integrations</a> settings, which is the operative deletion/revocation
+    mechanism for Meta data today. This section will be updated to
+    describe a JACK-provided command if and when one exists. Revoking
+    Meta access, however it is done, does <strong>not</strong> delete
+    any post, Reel, or content already hosted on Facebook or Instagram.
+  </p>
 
-    <h2>Authentication data</h2>
+  <h2>Retention</h2>
+  <p>
+    Local application data is retained only as long as necessary to
+    operate JACK's publishing and duplicate-protection functionality,
+    consistent with each platform's own API terms. For YouTube data, an
+    operator may request deletion of locally stored data via JACK's own
+    <code>youtube delete-data</code> command, which quarantines and
+    attempts to revoke JACK's Google authorization, then removes the
+    local policy-acceptance record, minimizes locally stored YouTube
+    publication-state records, sweeps any abandoned local YouTube
+    media-snapshot data, and cancels any pending YouTube-bearing
+    schedule -- this local cleanup happens regardless of whether
+    Google's remote revocation endpoint confirms the credential is
+    revoked, since a locally quarantined credential is already unusable
+    by JACK either way. JACK does not yet provide an equivalent local
+    deletion command for Meta or TikTok data. For Meta, the current
+    revocation route is described in the Meta section above. JACK's
+    TikTok API integration remains limited to development/Sandbox
+    testing, while production TikTok posting is performed manually
+    through TikTok's normal creator interface; this policy does not
+    claim a JACK-provided TikTok revocation or local data-deletion
+    command.
+  </p>
 
-    <p>
-      Authentication credentials and tokens used by JACK Music Publisher are
-      stored locally on the user's device and are used only to communicate with
-      the connected platform on behalf of the authorized user.
-    </p>
-
-    <h2>Content</h2>
-
-    <p>
-      Media and publishing information are processed only as necessary to carry
-      out actions explicitly requested by the user.
-    </p>
-
-    <h2>Data sharing</h2>
-
-    <p>
-      JACK Music Publisher does not sell personal information. Information is
-      shared with connected social media platforms only when required to perform
-      an authorized publishing or authentication operation.
-    </p>
-
-    <h2>Third-party services</h2>
-
-    <p>
-      Use of connected services such as TikTok is also subject to the privacy
-      policies and terms of those services.
-    </p>
-
-    <h2>Changes</h2>
-
-    <p>
-      This Privacy Policy may be updated as the application develops.
-    </p>
-
-    <p><a href="index.html">Back to JACK Music Publisher</a></p>
-  </main>
+  <h2>Contact</h2>
+  <p>
+    <strong>jackdaher911@gmail.com</strong>
+  </p>
 </body>
 </html>
